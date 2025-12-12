@@ -1,51 +1,50 @@
 class Node:
     """Вузол двійкового дерева пошуку."""
-    
-    def __init__(self, key):
-        self.left = None
-        self.right = None
-        self.val = key
+
+    def __init__(self, key: int) -> None:
+        self.left: Node | None = None
+        self.right: Node | None = None
+        self.val: int = key
 
 
-def insert(root, key):
-    """Вставляє новий ключ у BST."""
-    if root is None:
+def insert(node: Node | None, key: int) -> Node:
+    """Вставляє новий ключ у BST. Повертає корінь дерева."""
+    if node is None:
         return Node(key)
 
-    if key < root.val:
-        root.left = insert(root.left, key)
+    if key < node.val:
+        node.left = insert(node.left, key)
     else:
-        root.right = insert(root.right, key)
+        node.right = insert(node.right, key)
 
-    return root
-
-
-def search(root, key):
-    """Пошук ключа у BST. Повертає вузол або None."""
-    if root is None or root.val == key:
-        return root
-
-    if key < root.val:
-        return search(root.left, key)
-
-    return search(root.right, key)
+    return node
 
 
-def find_max(root):
-    """Повертає найбільше значення у BST."""
-    if root is None:
+def search(node: Node | None, key: int) -> Node | None:
+    if node is None or node.val == key:
+        return node
+
+    if key < node.val:
+        return search(node.left, key)
+
+    return search(node.right, key)
+
+
+def find_max(node: Node | None) -> int | None:
+    """Повертає найбільше значення у BST або None, якщо дерево порожнє."""
+    if node is None:
         return None
 
-    current = root
+    current = node
     while current.right is not None:
         current = current.right
 
     return current.val
 
 
-# Тест
 if __name__ == "__main__":
-    root = Node(5)
+    # Побудова дерева
+    root: Node | None = Node(5)
     root = insert(root, 3)
     root = insert(root, 2)
     root = insert(root, 4)
@@ -57,7 +56,7 @@ if __name__ == "__main__":
     value_to_find = 4
     result = search(root, value_to_find)
 
-    if result:
+    if result is not None:
         print(f"У дереві знайдено значення {result.val}")
     else:
         print(f"У дереві не знайдено значення {value_to_find}")
