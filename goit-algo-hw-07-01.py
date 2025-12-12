@@ -8,7 +8,7 @@ class Node:
 
 
 def insert(node: Node | None, key: int) -> Node:
-    # Вставляє новий ключ у BST. Повертає корінь дерева.
+    # Вставляє новий ключ у двійковому дереві. Повертає корінь дерева.
     if node is None:
         return Node(key)
 
@@ -31,7 +31,7 @@ def search(node: Node | None, key: int) -> Node | None:
 
 
 def find_max(node: Node | None) -> int | None:
-    # Повертає найбільше значення у BST або None, якщо дерево порожнє.
+    # Повертає найбільше значення у двійковому дереві або None, якщо дерево порожнє.
     if node is None:
         return None
 

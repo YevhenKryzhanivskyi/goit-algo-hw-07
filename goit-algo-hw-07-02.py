@@ -1,5 +1,5 @@
 class Node:
-    # Вузол двійкового дерева пошуку.
+    # Вузол двійкового дерева пошуку (BST).
 
     def __init__(self, key: int) -> None:
         self.left: Node | None = None
